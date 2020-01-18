@@ -1,0 +1,11 @@
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\bin\Debug\netcoreapp3.1\AgendaContatos.Domain.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\obj\Debug\netcoreapp3.1\AgendaContatos.Repository.csprojAssemblyReference.cache
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\obj\Debug\netcoreapp3.1\AgendaContatos.Repository.AssemblyInfoInputs.cache
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\obj\Debug\netcoreapp3.1\AgendaContatos.Repository.AssemblyInfo.cs
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\bin\Debug\netcoreapp3.1\AgendaContatos.Repository.deps.json
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\bin\Debug\netcoreapp3.1\AgendaContatos.Repository.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\bin\Debug\netcoreapp3.1\AgendaContatos.Repository.pdb
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\bin\Debug\netcoreapp3.1\AgendaContatos.Domain.pdb
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\obj\Debug\netcoreapp3.1\AgendaContatos.Repository.csproj.CopyComplete
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\obj\Debug\netcoreapp3.1\AgendaContatos.Repository.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Repository\obj\Debug\netcoreapp3.1\AgendaContatos.Repository.pdb

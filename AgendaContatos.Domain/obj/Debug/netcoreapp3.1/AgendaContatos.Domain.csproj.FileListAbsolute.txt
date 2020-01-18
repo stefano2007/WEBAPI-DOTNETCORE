@@ -1,0 +1,8 @@
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\bin\Debug\netcoreapp3.1\AgendaContatos.Domain.deps.json
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\bin\Debug\netcoreapp3.1\AgendaContatos.Domain.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\bin\Debug\netcoreapp3.1\AgendaContatos.Domain.pdb
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\obj\Debug\netcoreapp3.1\AgendaContatos.Domain.csprojAssemblyReference.cache
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\obj\Debug\netcoreapp3.1\AgendaContatos.Domain.AssemblyInfoInputs.cache
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\obj\Debug\netcoreapp3.1\AgendaContatos.Domain.AssemblyInfo.cs
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\obj\Debug\netcoreapp3.1\AgendaContatos.Domain.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Domain\obj\Debug\netcoreapp3.1\AgendaContatos.Domain.pdb

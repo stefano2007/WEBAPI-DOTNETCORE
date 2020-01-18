@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using AgendaContatos.Repository;
 
 namespace AgendaContatos.Server
 {
@@ -26,6 +29,10 @@ namespace AgendaContatos.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddHttpClient();
+
+            //Add Entity Frameword
+            services.AddDbContext<AgendaContatosContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbAgendaContatosLocal")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,11 +47,13 @@ namespace AgendaContatos.Server
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
