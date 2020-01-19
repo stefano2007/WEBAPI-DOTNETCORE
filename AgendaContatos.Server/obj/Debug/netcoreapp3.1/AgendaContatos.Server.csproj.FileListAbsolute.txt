@@ -1,7 +1,6 @@
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.csprojAssemblyReference.cache
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\staticwebassets\AgendaContatos.Server.StaticWebAssets.Manifest.cache
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\staticwebassets\AgendaContatos.Server.StaticWebAssets.xml
-C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.MvcApplicationPartsAssemblyInfo.cache
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.AssemblyInfoInputs.cache
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.AssemblyInfo.cs
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -146,3 +145,11 @@ C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreap
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.dll
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.pdb
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\AgendaContatos.Server.Views.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.MvcApplicationPartsAssemblyInfo.cache

@@ -11,6 +11,7 @@ namespace AgendaContatos.Repository
         public AgendaContatosContext(DbContextOptions<AgendaContatosContext> options) :
             base(options)
         {
+            this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public DbSet<Usuario> Usuarios { get; set; }

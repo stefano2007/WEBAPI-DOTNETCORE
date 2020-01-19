@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgendaContatos.Server.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TelefonesController : ControllerBase
@@ -26,7 +28,7 @@ namespace AgendaContatos.Server.Controllers
         public async Task<ActionResult<IEnumerable<Telefone>>> GetTelefones()
         {
             return await _context.Telefones
-                .Include(x => x.Contato)
+                //.Include(x => x.Contato)
                 .Include(x => x.Tipotelefone)
                 .ToListAsync();
         }
@@ -36,7 +38,7 @@ namespace AgendaContatos.Server.Controllers
         public async Task<ActionResult<Telefone>> GetTelefone(int id)
         {
             var telefone = await _context.Telefones
-                .Include(x => x.Contato)
+                //.Include(x => x.Contato)
                 .Include(x => x.Tipotelefone)
                 .Where(x => x.Id_Telefone == id)
                 .FirstAsync();

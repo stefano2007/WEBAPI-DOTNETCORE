@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgendaContatos.Server.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EmailsController : ControllerBase
@@ -26,7 +28,7 @@ namespace AgendaContatos.Server.Controllers
         public async Task<ActionResult<IEnumerable<Email>>> GetEmails()
         {
             return await _context.Emails
-                .Include(x => x.Contato)
+                //.Include(x => x.Contato)
                 .ToListAsync();
         }
 
@@ -35,7 +37,7 @@ namespace AgendaContatos.Server.Controllers
         public async Task<ActionResult<Email>> GetEmail(int id)
         {
             var email = await _context.Emails
-                .Include(x => x.Contato)
+                //.Include(x => x.Contato)
                 .Where(x => x.Id_Email == id)
                 .FirstAsync();
 

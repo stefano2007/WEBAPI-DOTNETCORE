@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace AgendaContatos.Domain
 {
@@ -13,6 +14,7 @@ namespace AgendaContatos.Domain
         public int Id_Telefone { get; set; }
         public int Id_Contato { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("Id_Contato")]
         public Contato Contato { get; set; }
         public int Id_Tipotelefone { get; set; }

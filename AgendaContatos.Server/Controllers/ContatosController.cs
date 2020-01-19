@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgendaContatos.Server.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ContatosController : ControllerBase
@@ -25,14 +27,23 @@ namespace AgendaContatos.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contato>>> GetContatos()
         {
-            return await _context.Contatos.ToListAsync();
+            return await _context.Contatos
+                .Include(x => x.Usuario)
+                .Include(x => x.Emails)
+                .Include(x => x.Telefones)
+                .ToListAsync();
         }
 
         // GET: api/Contatos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Contato>> GetContato(int id)
         {
-            var contato = await _context.Contatos.FindAsync(id);
+            var contato = await _context.Contatos
+                .Include(x => x.Usuario)
+                .Include(x => x.Emails)
+                .Include(x => x.Telefones)
+                .Where(x => x.Id_Contato == id)
+                .FirstAsync();
 
             if (contato == null)
             {

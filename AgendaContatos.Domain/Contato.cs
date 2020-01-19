@@ -16,6 +16,8 @@ namespace AgendaContatos.Domain
         [ForeignKey("Id_Usuario")]
         public Usuario Usuario { get; set; }
         public string Nome { get; set; }
+        public List<Telefone> Telefones { get; set; }
+        public ICollection<Email> Emails { get; set; }
         public bool? Ativo { get; set; }
         public DateTime? DtInclusao { get; set; }
     }
