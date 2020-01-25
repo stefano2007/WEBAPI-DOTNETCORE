@@ -152,4 +152,6 @@ C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreap
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\SarmentoSistemas\AgendaContatos.API\AgendaContatos.Server\obj\Debug\netcoreapp3.1\AgendaContatos.Server.MvcApplicationPartsAssemblyInfo.cache

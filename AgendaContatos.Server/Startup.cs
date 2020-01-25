@@ -18,6 +18,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using AgendaContatos.Server.Services;
+using AutoMapper;
 
 namespace AgendaContatos.Server
 {
@@ -65,6 +66,7 @@ namespace AgendaContatos.Server
                 };
             });
 
+            services.AddAutoMapper(typeof(AutoMapperProfiles));
             services.AddScoped<ILoginService, LoginService>();
         }
 

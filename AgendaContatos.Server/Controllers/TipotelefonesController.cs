@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace AgendaContatos.Server.Controllers
 {
@@ -17,10 +18,12 @@ namespace AgendaContatos.Server.Controllers
     public class TipotelefonesController : ControllerBase
     {
         private readonly AgendaContatosContext _context;
+        private readonly IMapper _mapper;
 
-        public TipotelefonesController(AgendaContatosContext context)
+        public TipotelefonesController(AgendaContatosContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Tipotelefones

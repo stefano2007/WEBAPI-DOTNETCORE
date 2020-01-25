@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
 using Microsoft.AspNetCore.Authorization;
+using AgendaContatos.Server.Dtos;
+using AutoMapper;
 
 namespace AgendaContatos.Server.Controllers
 {
@@ -17,24 +19,30 @@ namespace AgendaContatos.Server.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly AgendaContatosContext _context;
+        private readonly IMapper _mapper;
 
-        public UsuariosController(AgendaContatosContext context)
+        public UsuariosController(AgendaContatosContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Usuarios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
         {
-            return await _context.Usuarios.ToListAsync();
+            return await _context.Usuarios
+                .Where(x => x.Ativo == true)
+                .ToListAsync();
         }
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> GetUsuario(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _context.Usuarios
+                .Where(x => x.Ativo == true && x.Id_Usuario == id)
+                .FirstAsync();
 
             if (usuario == null)
             {
@@ -82,6 +90,7 @@ namespace AgendaContatos.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
         {
+            //incluir automapper
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
 
@@ -98,7 +107,9 @@ namespace AgendaContatos.Server.Controllers
                 return NotFound();
             }
 
-            _context.Usuarios.Remove(usuario);
+            //_context.Usuarios.Remove(usuario);
+            usuario.Ativo = false;
+            _context.Entry(usuario).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return usuario;

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace AgendaContatos.Server.Controllers
 {
@@ -17,32 +18,39 @@ namespace AgendaContatos.Server.Controllers
     public class ContatosController : ControllerBase
     {
         private readonly AgendaContatosContext _context;
+        private readonly IMapper _mapper;
+        private int _idUsuario;
 
-        public ContatosController(AgendaContatosContext context)
+        public ContatosController(AgendaContatosContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-
+        
         // GET: api/Contatos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contato>>> GetContatos()
         {
+            _idUsuario = Convert.ToInt32(User.Identity.Name);
             return await _context.Contatos
+                .Where(x => x.Ativo == true && x.Id_Usuario == _idUsuario)
                 .Include(x => x.Usuario)
                 .Include(x => x.Emails)
                 .Include(x => x.Telefones)
                 .ToListAsync();
         }
 
+        
         // GET: api/Contatos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Contato>> GetContato(int id)
         {
+            _idUsuario = Convert.ToInt32(User.Identity.Name);
             var contato = await _context.Contatos
+                .Where(x => x.Ativo == true && x.Id_Contato == id && x.Id_Usuario == _idUsuario)
                 .Include(x => x.Usuario)
                 .Include(x => x.Emails)
                 .Include(x => x.Telefones)
-                .Where(x => x.Id_Contato == id)
                 .FirstAsync();
 
             if (contato == null)
@@ -52,7 +60,7 @@ namespace AgendaContatos.Server.Controllers
 
             return contato;
         }
-
+        
         // PUT: api/Contatos/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -107,7 +115,9 @@ namespace AgendaContatos.Server.Controllers
                 return NotFound();
             }
 
-            _context.Contatos.Remove(contato);
+            //_context.Contatos.Remove(contato);
+            contato.Ativo = false;
+            _context.Entry(contato).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return contato;

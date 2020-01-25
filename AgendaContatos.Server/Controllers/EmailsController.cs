@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
 using Microsoft.AspNetCore.Authorization;
+using AgendaContatos.Server.Dtos;
+using AutoMapper;
 
 namespace AgendaContatos.Server.Controllers
 {
@@ -17,10 +19,12 @@ namespace AgendaContatos.Server.Controllers
     public class EmailsController : ControllerBase
     {
         private readonly AgendaContatosContext _context;
+        private readonly IMapper _mapper;
 
-        public EmailsController(AgendaContatosContext context)
+        public EmailsController(AgendaContatosContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Emails
@@ -53,7 +57,7 @@ namespace AgendaContatos.Server.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmail(int id, Email email)
+        public async Task<IActionResult> PutEmail(int id, EmailDto email)
         {
             if (id != email.Id_Email)
             {
@@ -85,8 +89,11 @@ namespace AgendaContatos.Server.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Email>> PostEmail(Email email)
+        public async Task<ActionResult<Email>> PostEmail(EmailDto emailDto)
         {
+            var email = _mapper.Map<Email>(emailDto);
+            email.Valido = true;
+            email.DtInclusao = DateTime.Now;
             _context.Emails.Add(email);
             await _context.SaveChangesAsync();
 
@@ -103,7 +110,9 @@ namespace AgendaContatos.Server.Controllers
                 return NotFound();
             }
 
-            _context.Emails.Remove(email);
+            //_context.Emails.Remove(email);
+            email.Valido = false;
+            _context.Entry(email).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return email;

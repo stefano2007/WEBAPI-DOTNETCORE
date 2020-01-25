@@ -3,6 +3,7 @@ using AgendaContatos.Repository;
 using AgendaContatos.Server.Dtos;
 using AgendaContatos.Server.Helpers;
 using AgendaContatos.Server.Models;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -20,10 +21,12 @@ namespace AgendaContatos.Server.Services
     {
         private readonly AppSettings _appSettings;
         private readonly AgendaContatosContext _context;
-        public LoginService(IOptions<AppSettings> appSettings, AgendaContatosContext context)
+        private readonly IMapper _mapper;
+        public LoginService(IOptions<AppSettings> appSettings, AgendaContatosContext context, IMapper mapper)
         {
             _appSettings = appSettings.Value;
             _context = context;
+            _mapper = mapper;
         }
         public async Task<UsuarioToken> Authenticate(UsuarioLoginDto userLogin)
         {
@@ -41,16 +44,8 @@ namespace AgendaContatos.Server.Services
             // remove password before returning
             user.Senha = null;
 
-            UsuarioToken usuarioToken = new UsuarioToken()
-            {
-                Id_Usuario = user.Id_Usuario,
-                Login = user.Login,
-                Senha = user.Senha,
-                Nome = user.Nome,
-                DtInclusao = user.DtInclusao,
-                Ativo = user.Ativo,
-                Auth = auth
-            };
+            UsuarioToken usuarioToken = _mapper.Map<Usuario, UsuarioToken>(user);
+            usuarioToken.Auth = auth;
 
             return usuarioToken;
         }

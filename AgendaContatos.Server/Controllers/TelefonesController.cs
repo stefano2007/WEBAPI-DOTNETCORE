@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using AgendaContatos.Domain;
 using AgendaContatos.Repository;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using AgendaContatos.Server.Dtos;
 
 namespace AgendaContatos.Server.Controllers
 {
@@ -17,10 +19,12 @@ namespace AgendaContatos.Server.Controllers
     public class TelefonesController : ControllerBase
     {
         private readonly AgendaContatosContext _context;
+        private readonly IMapper _mapper;
 
-        public TelefonesController(AgendaContatosContext context)
+        public TelefonesController(AgendaContatosContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Telefones
@@ -87,8 +91,11 @@ namespace AgendaContatos.Server.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Telefone>> PostTelefone(Telefone telefone)
+        public async Task<ActionResult<Telefone>> PostTelefone(TelefoneDto telefoneDto)
         {
+            var telefone = _mapper.Map<TelefoneDto, Telefone>(telefoneDto);
+            telefone.Valido = true;
+            telefone.DtInclusao = DateTime.Now;
             _context.Telefones.Add(telefone);
             await _context.SaveChangesAsync();
 
@@ -105,7 +112,9 @@ namespace AgendaContatos.Server.Controllers
                 return NotFound();
             }
 
-            _context.Telefones.Remove(telefone);
+            //_context.Telefones.Remove(telefone);
+            telefone.Valido = false;
+            _context.Entry(telefone).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return telefone;
